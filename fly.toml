@@ -6,7 +6,7 @@ primary_region = "sin"
 
 [env]
   DOWNLOAD_DIR = "/app/downloads"
-  MAX_FILE_SIZE_MB = "50"
+  MAX_FILE_SIZE_MB = "500"
 
 [[vm]]
   memory = "256mb"
