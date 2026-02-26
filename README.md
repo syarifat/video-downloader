@@ -137,78 +137,33 @@ go-video-bot/
 └── README.md
 ```
 
-## 🚀 Deploy ke Hosting Gratis
+## 🚀 Deploy ke Render.com (Gratis)
 
-### Opsi 1: Railway.app (Rekomendasi ⭐)
+Render menyediakan **Background Worker gratis**, cocok untuk bot Telegram.
 
-Railway memberikan **$5 credit gratis per bulan** (~500 jam runtime), cukup untuk bot Telegram 24/7.
+### Langkah-langkah:
 
-**Langkah-langkah:**
+1. **Buat akun** di [render.com](https://render.com)
+2. **Push project** ini ke GitHub repository
+3. Di Render dashboard, klik **"New +"** → **"Background Worker"**
+4. **Connect** GitHub repo `go-video-bot`
+5. Isi konfigurasi:
+   - **Name**: `go-video-bot`
+   - **Region**: `Singapore (Southeast Asia)`
+   - **Runtime**: `Docker`
+   - **Instance Type**: `Free`
+6. Tambahkan **Environment Variable**:
+   - Key: `TELEGRAM_BOT_TOKEN`
+   - Value: `token-dari-botfather`
+7. Klik **"Create Background Worker"** — selesai! 🎉
 
-1. Buat akun di [railway.app](https://railway.app)
-2. Push project ini ke GitHub repository
-3. Di Railway dashboard, klik **"New Project"** → **"Deploy from GitHub Repo"**
-4. Pilih repository `go-video-bot`
-5. Railway akan otomatis mendeteksi `Dockerfile`
-6. Tambahkan environment variable:
-   - Klik service → **Variables** → **New Variable**
-   - Tambahkan `TELEGRAM_BOT_TOKEN` = `token-dari-botfather`
-7. Klik **Deploy** — selesai! 🎉
+### Atau deploy via Blueprint:
 
-**Via Railway CLI:**
-
-```bash
-# Install Railway CLI
-npm install -g @railway/cli
-
-# Login
-railway login
-
-# Link ke project
-railway link
-
-# Set token
-railway variables set TELEGRAM_BOT_TOKEN=your-token-here
-
-# Deploy
-railway up
-```
-
----
-
-### Opsi 2: Fly.io (Alternatif)
-
-Fly.io memberikan **3 VM shared gratis**, cocok untuk bot yang selalu aktif.
-
-**Langkah-langkah:**
-
-1. Install Fly CLI: [fly.io/docs/hands-on/install-flyctl](https://fly.io/docs/hands-on/install-flyctl/)
-2. Login: `fly auth login`
-3. Deploy:
-
-```bash
-# Launch app (pertama kali)
-fly launch --name go-video-bot --region sin --no-deploy
-
-# Set secret token
-fly secrets set TELEGRAM_BOT_TOKEN=your-token-here
-
-# Deploy
-fly deploy
-```
-
----
-
-### Opsi 3: Render.com
-
-1. Buat akun di [render.com](https://render.com)
-2. New → **Background Worker**
-3. Connect GitHub repo
-4. Runtime: **Docker**
-5. Tambahkan `TELEGRAM_BOT_TOKEN` di Environment
-6. Deploy
-
-> ⚠️ Free tier Render akan spin down setelah idle, tapi akan restart otomatis saat ada request.
+1. Di Render dashboard, klik **"New +"** → **"Blueprint"**
+2. Connect repo yang berisi file `render.yaml`
+3. Render akan otomatis membaca konfigurasi
+4. Isi value `TELEGRAM_BOT_TOKEN`
+5. Deploy
 
 ## ⚠️ Batasan
 
